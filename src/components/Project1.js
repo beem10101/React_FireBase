@@ -5,7 +5,7 @@ import '../App.css';
 const Project1 = () => {
     const [name,setName] = useState("hello");
     return (
-    <form classname="form">
+    <form className="form">
         <h1>information</h1> 
 
 
