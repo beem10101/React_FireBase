@@ -5,8 +5,8 @@ import Showdata from "./components/Showdata";
 function App() {
   return (
     <div className="App">
-      {/* <Project1 /> */}
-      <Showdata />
+      <Project1 />
+      {/* <Showdata /> */}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 // import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
-import { firebase } from "firebase";
+import  firebase  from "firebase/compat/app";
+import 'firebase/compat/firestore'
 
 
 
@@ -15,5 +16,5 @@ const firebaseConfig = firebase.initializeApp({
   measurementId: "G-JYGPW7NYRW"
 });
 
-const db = firebaseConfig.firebaseshore()
+const db = firebaseConfig.firestore()
 export { db }
