@@ -39,3 +39,8 @@ textarea {
   color: rgb(0, 0, 32);
   outline: none;
 }
+
+botton {
+  font-family: "inter",sans-serif;
+  color: aliceblue;
+}

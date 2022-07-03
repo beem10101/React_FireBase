@@ -7,9 +7,11 @@ const Project1 = () => {
     const [name,setName] = useState("");
     const [tel, setTel] = useState("");
     const [nickname, setNickname] = useState("");
+    const [formLoad, setformLoad] = useState(false);
     
     const handleSubmit = (e) =>{
-        e.preventDefault();
+        // e.preventDefault();
+        setformLoad(true);
         db.collection('information').add({
          name: name,
          tel: tel,
@@ -17,10 +19,18 @@ const Project1 = () => {
         })
         .then(()=>{
         alert(" info add!!!");
+        setformLoad(false);
         })
         .catch((error)=>{
-          alert(error.message)}
-          )
+          alert(error.message)
+          setformLoad(false);
+        }
+        )
+        
+        setName("");
+        setNickname("");
+        setTel("");
+
         // console.log()
     }
     return (
@@ -45,7 +55,7 @@ const Project1 = () => {
         <input placeholder='0xx-xxx-xxxx'
         value={tel} onChange={(e)=>setTel(e.target.value)}></input>
 
-        <button >submit</button>
+        <button type="submit" style={{background: formLoad ? "#ccc" : "rgb(2, 2, 110)"}}>submit</button>
     </form>
   )
 }
