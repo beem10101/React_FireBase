@@ -2,62 +2,76 @@ import React, { useState } from 'react'
 import '../App.css';
 import { db } from "../Firebase";
 
-
 const Project1 = () => {
-    const [name,setName] = useState("");
-    const [tel, setTel] = useState("");
-    const [nickname, setNickname] = useState("");
-    const [formLoad, setformLoad] = useState(false);
-    
-    const handleSubmit = (e) =>{
-        // e.preventDefault();
-        setformLoad(true);
-        db.collection('information').add({
-         name: name,
-         tel: tel,
-         nickname: nickname, 
-        })
-        .then(()=>{
-        alert(" info add!!!");
-        setformLoad(false);
-        })
-        .catch((error)=>{
-          alert(error.message)
-          setformLoad(false);
-        }
-        )
-        
-        setName("");
-        setNickname("");
-        setTel("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [number, setNumber] = useState(0);
+  const [classroom, setClassroom] = useState("");
+  const [message, setMessage] = useState("");
 
-        // console.log()
-    }
-    return (
-    <form className="form" onSubmit={handleSubmit}>
-        <h1>information</h1> 
-        <label>Name</label>
-        {/* <label>{name}</label> */}
-        <input placeholder='fullName' 
-        value={name}
-        onChange={(e)=>setName(e.target.value)}>
-        </input>
-  
-        <label>Nickname</label>
-        {/* <label>{nickname}</label> */}
-        <input placeholder='nickname'
-        value={nickname}
-        onChange={(e)=>setNickname(e.target.value)}>
-        </input>
 
-        <label>Tel.</label>
-        {/* <label>{tel}</label> */}
-        <input placeholder='0xx-xxx-xxxx'
-        value={tel} onChange={(e)=>setTel(e.target.value)}></input>
+  const [formLoad, setFormLoad] = useState(false);
 
-        <button type="submit" style={{background: formLoad ? "#ccc" : "rgb(2, 2, 110)"}}>submit</button>
-    </form>
-  )
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      setFormLoad(true);
+      db.collection('information').add({
+          name: name,
+          surname: surname,
+          number: number,
+          classroom: classroom,
+          message: message,
+
+      })
+      .then(() => {
+          alert('Message added successfully');
+          setFormLoad(false)
+      })
+      .catch((error) => {
+          alert(error.message);
+          setFormLoad(false)
+      });
+
+
+      setName("")
+      setSurname("")
+      setNumber(0)
+      setClassroom("")
+      setMessage("")
+
+  }
+
+
+return (
+  <form className="form" onSubmit={handleSubmit}>
+      <h1>Information</h1>
+
+      <label>Name</label>
+      <input placeholder='Name' value={name}
+      onChange={(e) => setName(e.target.value)}
+      ></input>
+
+      <label>Surname</label>
+      <input placeholder='Surname' value={surname}
+      onChange={(e) => setSurname(e.target.value)}></input>
+      
+      <label>Number</label>
+      <input placeholder='Number' value={number}
+      onChange={(e) => setNumber(e.target.value)}></input>
+      
+      <label>Class</label>
+      <input placeholder='Class' value={classroom}
+      onChange={(e) => setClassroom(e.target.value)}></input>
+     
+      <label>Message</label>
+      <textarea placeholder='Message' value={message}
+      onChange={(e) => setMessage(e.target.value)}></textarea>
+
+      <button type="submit" style={{background: formLoad ? "#ccc" : "rgb(2, 2, 110)"}}>Submit</button>
+
+  </form>
+
+)
 }
 
 export default Project1

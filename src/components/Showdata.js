@@ -1,30 +1,30 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ob from "firebase/compat/app";
-import {db} from "../Firebase";
+import { db } from "../Firebase";
 
 const Showdata = () => {
-  const [posts,setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() =>{
+  useEffect(() => {
     // console.log(1);
     const getPostFormFirebase = [];
 
-    const dataList = 
-    db.collection("information")
-    .onSnapshot((querySnapshot)=>{
-      querySnapshot.forEach((doc) =>{
-        getPostFormFirebase.push({
-          ...doc.data(),
-          key:doc.id,
+    const dataList =
+      db.collection("information")
+        .onSnapshot((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            getPostFormFirebase.push({
+              ...doc.data(),
+              key: doc.id,
+            })
+          })
+          setPosts(getPostFormFirebase);
+          setLoading(false);
         })
-      })
-      setPosts(getPostFormFirebase);
-      setLoading(false);
-    })
 
   }, [])
-  if(loading){
+  if (loading) {
     return <h1>loading Firebase...</h1>
   }
 
@@ -33,15 +33,21 @@ const Showdata = () => {
 
       {posts.length > 0 ? (
         posts.map((post) =>
-          <div key={post.key}>
-          <li>{post.key}</li>
-          {/* <li>{post.name}</li> */}
-          </div>
+              <div>
+                <div key={post.key}>
+                  <h3>key</h3>
+                  <p>{post.key}</p>
+                  <h3>name</h3>
+                  <p>{post.name}</p>
+                  <h3>message</h3>
+                  <p>{post.message}</p>
+                </div>
+              </div>          
         )
       )
-      :(
-        <h1> No Data!!!</h1>
-      )
+        : (
+          <h1> No Data!!!</h1>
+        )
       }
     </div>
   )
