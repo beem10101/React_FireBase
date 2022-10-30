@@ -30,15 +30,15 @@ const Showdata = () => {
 
   return (
     <div>
-
+      <h4 className='banner-data'>data</h4>
       {posts.length > 0 ? (
         posts.map((post) =>
               <div>
-                <div key={post.key}>
-                  <h3>key</h3>
-                  <p>{post.key}</p>
+                <div key={post.key} className='banner-data'>
                   <h3>name</h3>
-                  <p>{post.name}</p>
+                  <p>{post.name} {post.surname}</p>
+                  <h3>number</h3>
+                  <p>{post.number}</p>
                   <h3>message</h3>
                   <p>{post.message}</p>
                 </div>

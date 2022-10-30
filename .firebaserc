@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "project4-14-10-env-dev",
+    "dev": "project4-14-10-env-dev"
+  },
+  "targets": {},
+  "etags": {}
+}

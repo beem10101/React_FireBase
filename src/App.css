@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+:root{
+  --primary-gray : #b7b7b7;
+}
 .App {
   width: 400px;
   margin: 0 auto;
@@ -45,13 +48,9 @@ botton {
   color: aliceblue;
 }
 
-.banner {
-  margin-top: 50px;
-  /* padding: 80px; */
-  /* min-height: 60px; */
-  background-color: gray;
+.banner-data {
+  margin-top: 20px;
+  padding : 10px 10px 10px 10px;
+  background-color: var(--primary-gray);
   border-radius: 1%;
 }
-/* .banner-text{
-  margin: 40px;
-} */
