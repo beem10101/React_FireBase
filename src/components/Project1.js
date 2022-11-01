@@ -66,8 +66,10 @@ return (
       <label>Message</label>
       <textarea placeholder='Message' value={message}
       onChange={(e) => setMessage(e.target.value)}></textarea>
-
-      <button type="submit" style={{background: formLoad ? "#ccc" : "rgb(2, 2, 110)"}}>Submit</button>
+      <br/>
+      <br/>
+      <br/>
+      <button type="submit" style={{background: formLoad ? "#ccc" : "rgb(210, 210, 210)"}}>Submit</button>
 
   </form>
 
